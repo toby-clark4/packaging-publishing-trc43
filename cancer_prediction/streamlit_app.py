@@ -16,12 +16,25 @@ def list_saved_models(directory):
     return [file for file in os.listdir(directory) if file.endswith('.pkl')]
 
 @st.cache_resource
-def load_model(path='cancer_model.pkl'):
+def load_model(path: str ='cancer_model.pkl') -> CancerModel:
+    """Load a model from the given path.
+    Args:
+        path (str): The path to load the model from.
+    Returns:
+        CancerModel: The loaded model.
+    """
     model = CancerModel()
     model.load(path)
     return model
 
-def train_and_save_model(train_data, filename='cancer_model.pkl'):
+def train_and_save_model(train_data: pd.DataFrame, filename: str ='cancer_model.pkl') -> CancerModel:
+    """Train a model on the given data and save it to the given filename.  
+    Args:
+        train_data (pd.DataFrame): The training data.
+        filename (str): The filename to save the model to.
+    Returns:
+        CancerModel: The trained model.
+    """
     model = CancerModel()
     filename = os.path.join(MODELS_DIR, filename)
     X = train_data.drop('target', axis=1)
