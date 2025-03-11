@@ -1,0 +1,32 @@
+[project]
+name = "packaging-publishing-trc43"
+version = "0.1.0"
+description = "A package for classifying tumour malignance."
+authors = [
+    {name = "toby-clark4",email = "151521647+toby-clark4@users.noreply.github.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+packages = [{include = "cancer_prediction"}]
+requires-python = ">=3.12"
+dependencies = [
+    "scikit-learn (>=1.6.1,<2.0.0)",
+    "numpy (>=2.2.3,<3.0.0)",
+    "matplotlib (>=3.10.1,<4.0.0)",
+    "streamlit (>=1.43.1,<2.0.0)",
+    "pandas (>=2.2.3,<3.0.0)"
+]
+
+[tool.poetry]
+
+[tool.poetry.scripts]
+cancer-prediction = "cancer_prediction.cli:app"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^7.1.2"
+isort = "^6.0.1"
+black = "^25.1.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
